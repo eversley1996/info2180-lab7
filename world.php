@@ -10,16 +10,20 @@ $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 $country =$_GET['country'];
 $all =$_GET['all'];
 
-if($all =='true') {
-	$stmt = $conn->query("SELECT * FROM countries");
+filter_var($country, FILTER_SANITIZE_STRING);
+
+if($all =='false') {
+	$stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%';");
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 else {
-	$stmt =$conn->query("SELECT * FROM countries WHERE name LIKE '%$country%'");
+	$stmt = $conn->query("SELECT * FROM countries INNER JOIN cities ON countries.code = cities.country_code WHERE countries.name LIKE '%$country%';");
 	$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 ?>
 
+<?php if ($all == "false"): ?>
 <table border= "1" style="width:100%">
   <tr>
     <th>Name</th>
@@ -36,3 +40,19 @@ else {
   </tr>
   <?php endforeach; ?>
 </table>
+<?php else: ?>
+  <table style="width:100%">
+      <tr>
+        <th>Name</th>
+        <th>District</th>
+        <th>Popualtion</th>
+      </tr>
+      <?php foreach ($results as $row): ?>
+      <tr>
+        <td><?= $row['name']; ?></td>
+        <td><?= $row['district']; ?></td>
+        <td><?= $row['population']; ?></td>
+      </tr>
+      <?php endforeach; ?>
+  </table>
+<?php endif; ?>

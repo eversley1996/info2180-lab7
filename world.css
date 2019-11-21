@@ -44,11 +44,15 @@ main{
 }
 
 #country{
-    width: 85%;
+    width: 72%;
     height: 30px;
 }
 
 #lookup{
+    height: 30px;
+}
+
+#lookupcities{
     height: 30px;
 }
 
