@@ -10,7 +10,7 @@ let loadPage = () =>{
       
       var country= document.getElementById("country").value.toLowerCase();
       
-      let url="./world.php?country=" + country.trim();
+      let url="./world.php?country=" + country.trim() + "&all=false";
       
       httpRequest.open("GET", url, true);
       

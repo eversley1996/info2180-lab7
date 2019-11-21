@@ -21,6 +21,7 @@ header{
     padding-top: 50px;
     padding-left: 200px;
     padding-right: 200px;
+    padding-bottom: 50px;
 }
 
 #photo{
@@ -39,10 +40,11 @@ main{
     height: auto;
     align-content: center;
     border-bottom: 1px solid #e9e8ed;
+    
 }
 
 #country{
-    width: 80%;
+    width: 85%;
     height: 30px;
 }
 
@@ -52,4 +54,26 @@ main{
 
 label{
     font-family: cursive;
+}
+
+#controls{
+    padding-bottom: 50px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: cursive;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: CornflowerBlue;
+  color: Cornsilk;
 }
